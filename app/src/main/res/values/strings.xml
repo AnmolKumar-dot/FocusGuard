@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FocusGuard</string>
+    <string name="a11y_description">Watches which app and screen is open during a focus session so FocusGuard can block distracting apps, Instagram Reels, YouTube Shorts and non-study YouTube videos. Nothing is recorded or sent anywhere.</string>
+</resources>
