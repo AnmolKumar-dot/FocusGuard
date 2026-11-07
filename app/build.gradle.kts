@@ -11,8 +11,8 @@ android {
         applicationId = "com.focusguard.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 2
-        versionName = "2.0"
+        versionCode = 3
+        versionName = "2.1.0-alpha"
     }
 
     // A fixed signing key, so each new APK installs over the previous one without uninstalling.
