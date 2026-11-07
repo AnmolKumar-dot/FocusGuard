@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Adaptive launcher icon built from the exact uploaded FocusGuard artwork (logo.png).
+     The full neon shield + clock + orbital-ring image is preserved as the foreground layer
+     (centered within the adaptive safe zone), on a pure black background that matches the
+     artwork's own dark background. Density-specific PNGs live in mipmap-{mdpi..xxxhdpi}. -->
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/focusguard_icon_background" />
-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <background android:drawable="@color/focusguard_launcher_background" />
+    <foreground android:drawable="@mipmap/focusguard_logo" />
 </adaptive-icon>

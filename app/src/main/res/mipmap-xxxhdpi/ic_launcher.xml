@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pre-API 26 / non-adaptive fallback launcher icon: the complete uploaded FocusGuard
+     artwork (shield + clock + neon orbital ring on its original dark background),
+     scaled down per density from logo.png without cropping. -->
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@mipmap/ic_launcher_legacy" />

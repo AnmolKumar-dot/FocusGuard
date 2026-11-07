@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background layer for the adaptive launcher icon. The uploaded FocusGuard artwork
+         (logo.png) already sits on pure black, so the adaptive background matches it exactly. -->
+    <color name="focusguard_launcher_background">#000000</color>
+</resources>
