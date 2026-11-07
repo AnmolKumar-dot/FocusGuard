@@ -62,13 +62,13 @@ class ChannelPickerSheet : BaseSheet() {
             results = emptyList()
             searchMessage = ""
             if (query.length >= 2) {
-                if (prefs.apiKey.isNotBlank()) searchMessage = "Searching..."
+                searchMessage = "Searching..."
                 handler.postDelayed(searchRunnable, 500)
             }
             render()
         }
         btnKey.setOnClickListener {
-            ctx.promptText("YouTube API key", prefs.apiKey, "Paste your key here") {
+            ctx.promptText("Backup YouTube API key (optional)", prefs.apiKey, "Paste a key, or leave empty") {
                 prefs.apiKey = it
                 render()
             }
@@ -88,10 +88,6 @@ class ChannelPickerSheet : BaseSheet() {
     private fun runSearch() {
         val key = prefs.apiKey
         if (query.length < 2) return
-        if (key.isBlank()) {
-            render()
-            return
-        }
         val q = query
         val myToken = ++token
         searchMessage = "Searching..."
@@ -145,7 +141,7 @@ class ChannelPickerSheet : BaseSheet() {
         if (!isAdded || view == null) return
         val saved = prefs.channels()
         val hasKey = prefs.apiKey.isNotBlank()
-        btnKey.text = if (hasKey) "API key" else "Add API key"
+        btnKey.text = if (hasKey) "Backup key: on" else "Backup API key"
 
         val searching = query.length >= 2
         val items = if (searching) results else saved
@@ -158,9 +154,6 @@ class ChannelPickerSheet : BaseSheet() {
         tvListTitle.visibility = if (tvListTitle.text.isEmpty()) View.GONE else View.VISIBLE
 
         val message = when {
-            searching && !hasKey ->
-                "To search with logos, add a free YouTube API key (button above, see the README). " +
-                    "You can still add the channel by its exact name below."
             searching -> searchMessage
             saved.isEmpty() -> "No channels yet. Search for one above."
             else -> ""
