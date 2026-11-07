@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Keep the artwork inside the adaptive-icon safe zone. -->
+    <path
+        android:fillColor="#147FE3"
+        android:pathData="M54,17 L79,26 L79,46 C79,64 68,79 54,87 C40,79 29,64 29,46 L29,26 Z" />
+
+    <path
+        android:fillColor="#0B4F9C"
+        android:pathData="M54,23 L73,30 L73,46 C73,60 65,72 54,79 C43,72 35,60 35,46 L35,30 Z" />
+
+    <!-- Focus dial -->
+    <path
+        android:fillColor="#F5FAFF"
+        android:pathData="M54,33 A18,18 0,1 0,54 69 A18,18 0,1 0,54 33 Z" />
+    <path
+        android:fillColor="#12365C"
+        android:pathData="M54,37 A14,14 0,1 0,54 65 A14,14 0,1 0,54 37 Z" />
+
+    <!-- Clock hands -->
+    <path
+        android:fillColor="#35C7FF"
+        android:pathData="M52,41 L56,41 L56,51 L63,55 L61,59 L52,54 Z" />
+    <path
+        android:fillColor="#35C7FF"
+        android:pathData="M54,47 A3,3 0,1 0,54 53 A3,3 0,1 0,54 47 Z" />
+</vector>
