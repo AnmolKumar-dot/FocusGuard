@@ -30,7 +30,7 @@
 
 ## First-time setup
 
-1. Open **Blocks** and tap **Fix now**, then turn on **FocusGuard** in Accessibility settings.
+1. Open **Blocks** and tap **Fix now**, then turn on **FocusGuard** in Accessibility settings -> Downloaded Apps.
 2. On Android 13 and newer, if that switch is greyed out: phone Settings > Apps > FocusGuard > three-dot menu > **Allow restricted settings**, then try again.
 3. Set battery to **Unrestricted** for FocusGuard (Settings > Apps > FocusGuard > Battery) so Android does not stop it in the background.
 4. Choose the apps to block, then start a session from the **Focus** tab.
