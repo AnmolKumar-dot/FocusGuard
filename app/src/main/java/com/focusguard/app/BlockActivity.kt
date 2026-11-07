@@ -23,12 +23,14 @@ class BlockActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val prefs = Prefs(this)
-        val msLeft = prefs.sessionEndMs - System.currentTimeMillis()
-        val message = if (prefs.isSessionActive() && msLeft > 0) {
-            val minutes = (msLeft + 59_999L) / 60_000L
-            "That app is blocked for another $minutes min."
-        } else {
-            "Focus session finished. Nice work!"
+        val phase = prefs.currentPhase()
+        val message = when {
+            phase != null && phase.focus -> {
+                val minutes = (phase.endMs - System.currentTimeMillis() + 59_999L) / 60_000L
+                "That app is blocked for another $minutes min."
+            }
+            prefs.scheduleActive() -> "Your scheduled focus time is on, so that app is blocked right now."
+            else -> "Focus session finished. Nice work!"
         }
         findViewById<TextView>(R.id.blockMessage).text = message
     }

@@ -10,11 +10,11 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Toast
 
 /**
- * Watches the foreground app during a focus session.
+ * Watches the foreground app while blocking is on (a focus session, or a scheduled window).
  *
  *  - Blocked apps: sent home, block screen shown.
  *  - Instagram Reels / YouTube Shorts: Back is pressed as soon as the player screen appears.
- *  - YouTube study-channels-only: a video page whose channel isn't on your list is closed.
+ *  - YouTube study mode: a video page whose channel isn't on your list is closed.
  *
  * The Reels/Shorts/channel checks read the on-screen view tree, so they depend on the IDs and
  * labels Instagram and YouTube use today (English UI). Those can change with app updates;
@@ -32,7 +32,7 @@ class FocusAccessibilityService : AccessibilityService() {
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         val pkg = event?.packageName?.toString() ?: return
         if (pkg == packageName) return
-        if (!prefs.isSessionActive()) return
+        if (!prefs.isBlockingNow()) return
 
         if (pkg in blockedPackages()) {
             kickToBlockScreen()
@@ -53,7 +53,9 @@ class FocusAccessibilityService : AccessibilityService() {
 
     private fun blockedPackages(): Set<String> {
         val set = HashSet(prefs.blockedPackages)
-        if (prefs.sessionStrict) set.addAll(STRICT_EXTRA_BLOCKED)
+        if (prefs.ytMode == Prefs.YT_BLOCK) set.add(YOUTUBE)
+        // Only a strict manual session locks Settings, so a schedule can always be switched off.
+        if (prefs.strictBlockSettings && prefs.isLocked()) set.addAll(STRICT_EXTRA_BLOCKED)
         return set
     }
 
@@ -80,7 +82,7 @@ class FocusAccessibilityService : AccessibilityService() {
     // ---- YouTube ----
 
     private fun checkYouTube() {
-        if (!prefs.isSessionActive()) return
+        if (!prefs.isBlockingNow()) return
         val root = rootInActiveWindow ?: return
         if (root.packageName?.toString() != YOUTUBE) {
             badSince = 0L
@@ -126,21 +128,22 @@ class FocusAccessibilityService : AccessibilityService() {
             false // keep scanning: we need the whole screen
         }
 
-        if (shorts && (prefs.blockShorts || prefs.allowlistOnly)) {
+        val study = prefs.ytMode == Prefs.YT_STUDY
+        if (shorts && (prefs.blockShorts || study)) {
             badSince = 0L
             backOut("Shorts blocked")
             return
         }
 
         val watchPage = hasSubscribe && hasPlayer
-        if (!prefs.allowlistOnly || !watchPage) {
+        if (!study || !watchPage) {
             badSince = 0L
             return
         }
 
         // Prefer the "Subscribe to <channel>" label; fall back to all text on screen.
         val haystack = if (namedSubscribe.isNotEmpty()) namedSubscribe else texts
-        val allowed = prefs.allowedChannels()
+        val allowed = prefs.allowedChannelNames()
         val ok = allowed.isNotEmpty() && haystack.any { h -> allowed.any { h.contains(it) } }
         if (ok) {
             badSince = 0L
@@ -181,7 +184,7 @@ class FocusAccessibilityService : AccessibilityService() {
                     Intent(this, BlockActivity::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 )
-            } catch (_: Exception) {
+            } catch (e: Exception) {
                 // If Android refuses to open it, being sent home still does the job.
             }
         }, 200)
