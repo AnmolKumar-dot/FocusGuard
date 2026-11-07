@@ -7,7 +7,7 @@ A free, offline study-focus app for Android. Everything stays on your phone.
 - **Planner**: repeating schedules (for example Mon-Fri 6-8 PM) that turn blocking on automatically
 - **Blocks**: Shorts and Reels blocking, YouTube Allow / Study mode / Block, blocked apps list, strict-mode protections
 - **Stats**: today, streak, total, a 7-day chart and goals
-- **Study channels**: search a YouTube channel by name, see its logo, tap Add
+- **Study channels**: search a YouTube channel by name, see its logo, tap Add. No key or sign-in needed.
 
 ## Update from the first version
 1. Upload this folder's contents to your GitHub repo, replacing the old files (same paths are overwritten).
@@ -27,14 +27,12 @@ If the build fails, open the failed step and send the error text.
 2. On Android 13 and newer, sideloaded apps can't use this until you open phone Settings > Apps > FocusGuard, tap the three-dot menu and choose **Allow restricted settings**.
 3. Set battery to Unrestricted for FocusGuard (Settings > Apps > FocusGuard > Battery) so Android doesn't stop the service.
 
-## Channel search needs a free YouTube API key (one time, about 3 minutes)
-Searching channels with logos uses Google's official YouTube Data API, which needs your own key. It is free.
-1. Go to https://console.cloud.google.com and create a project.
-2. Open **APIs and Services > Library**, search **YouTube Data API v3**, press **Enable**.
-3. Open **APIs and Services > Credentials > Create credentials > API key**. Do not add app restrictions.
-4. In FocusGuard: **Blocks > Study channels > Add API key**, paste it, save.
+## Channel search
+Blocks > Study channels, then type part of a channel name. Results show the channel logo; tap Add.
 
-Free quota is 10,000 units a day and one search costs 100, so about 100 searches a day. The key is stored only on your phone and sent only to Google. Without a key you can still add a channel by typing its exact name.
+- It works with no key. It asks the same YouTube web address the YouTube website uses, the way apps like NewPipe do. This is unofficial, so YouTube can change it and the search may stop working until the app is updated. It has not been tested on a real phone.
+- If the search says it is down, you can still add a channel by typing its exact name (button under the list).
+- Optional backup: a free YouTube Data API key (Blocks > Study channels > Backup API key). When the no-key search fails, the app tries the official API with it. Get one at https://console.cloud.google.com: create a project, enable **YouTube Data API v3**, then Credentials > Create credentials > API key, with no app restrictions. About 100 searches a day are free.
 
 ## Things to know
 - Reels, Shorts and study-channel detection read Instagram's and YouTube's on-screen elements. Those can change when the apps update, and this has only been tested by reading the code, not on a real phone. English app language only.
