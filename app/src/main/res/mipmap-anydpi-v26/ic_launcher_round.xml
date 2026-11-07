@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Round launcher icon: same adaptive configuration; the system applies its round mask.
+     Built from the exact uploaded FocusGuard artwork (logo.png). -->
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/focusguard_icon_background" />
-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <background android:drawable="@color/focusguard_launcher_background" />
+    <foreground android:drawable="@mipmap/focusguard_logo" />
 </adaptive-icon>
