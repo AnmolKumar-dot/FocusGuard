@@ -1,7 +1,3 @@
-# FocusGuard
-
-A free, offline study-focus app for Android. Everything stays on your phone.
-
 ## What is in it
 - **Focus**: round timer, Timer or Pomodoro mode, strict mode, daily focus time and streak
 - **Planner**: repeating schedules (for example Mon-Fri 6-8 PM) that turn blocking on automatically
