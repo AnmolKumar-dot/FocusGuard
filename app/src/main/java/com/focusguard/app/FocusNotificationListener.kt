@@ -24,7 +24,7 @@ class FocusNotificationListener : NotificationListenerService() {
         val cat = n.category
         if (cat == Notification.CATEGORY_CALL || cat == Notification.CATEGORY_ALARM ||
             cat == Notification.CATEGORY_NAVIGATION || cat == Notification.CATEGORY_TRANSPORT ||
-            cat == Notification.CATEGORY_PROGRESS || cat == Notification.CATEGORY_EMERGENCY ||
+            cat == Notification.CATEGORY_PROGRESS ||
             cat == Notification.CATEGORY_REMINDER
         ) return
         if (pkg in FocusAccessibilityService.ALWAYS_OK) return
