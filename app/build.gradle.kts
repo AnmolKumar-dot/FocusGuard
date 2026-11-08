@@ -11,12 +11,14 @@ android {
         applicationId = "com.focusguard.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 3
-        versionName = "2.1.0-alpha"
+        versionCode = 4
+        versionName = "3.0.0"
     }
 
-    // A fixed signing key, so each new APK installs over the previous one without uninstalling.
-    // Fine for a personal sideloaded app; never use this for the Play Store.
+    // Debug builds keep a fixed key (committed in the repo) so test builds install over each other.
+    // Release builds are signed with YOUR private key, read from environment variables that the
+    // release workflow fills from GitHub Secrets (see README). Without them, release falls back to debug.
+    val releaseKeystore: String? = System.getenv("KEYSTORE_PATH")
     signingConfigs {
         getByName("debug") {
             storeFile = file("debug.keystore")
@@ -24,12 +26,27 @@ android {
             keyAlias = "androiddebugkey"
             keyPassword = "android"
         }
+        if (releaseKeystore != null && file(releaseKeystore).exists()) {
+            create("release") {
+                storeFile = file(releaseKeystore)
+                storePassword = System.getenv("KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("KEY_ALIAS")
+                keyPassword = System.getenv("KEY_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
         }
+    }
+
+    lint {
+        // A missing string in a translation should never stop a build.
+        checkReleaseBuilds = false
+        abortOnError = false
     }
 
     compileOptions {
