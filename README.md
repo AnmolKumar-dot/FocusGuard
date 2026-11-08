@@ -1,6 +1,6 @@
 <!-- To point the button at a new release, change the link below (it appears once, in the button). -->
 <p align="center">
-  <a href="https://github.com/AnmolKumar-dot/FocusGuard/releases/tag/FocusGuard_Android">
+  <a href="https://github.com/AnmolKumar-dot/FocusGuard/releases/latest">
     <img src="https://img.shields.io/badge/%E2%AC%87%20Download%20APK-Latest%20release-2F8CFF?style=for-the-badge&logo=android&logoColor=white" alt="Download the latest FocusGuard APK" height="56">
   </a>
 </p>
