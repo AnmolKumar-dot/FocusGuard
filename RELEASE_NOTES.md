@@ -2,7 +2,7 @@
 
 A free, offline study-focus app for Android. Version 3 turns the whole roadmap into features, gives the app a blue look that fades to red while focus is on, and replaces typed numbers with scroll-wheel timers.
 
-> **Please try this as a pre-release first.** This version was written without being run on a phone before release. Test each feature below and report what breaks (see the end).
+> Found a bug? Please report it (see the end) with your phone model and what you tapped.
 
 ### Install
 1. Download `FocusGuard-v3.0.0.apk` from the Assets below and open it. Android will ask you to allow installs from your browser or file manager.

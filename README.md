@@ -18,8 +18,6 @@
   <img src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&logoColor=white" alt="Android 8.0 and newer">
 </p>
 
-> **Heads up.** Version 3 added a lot at once and was written without being run on a phone first. Publish it as a **pre-release**, try each feature, and [report what breaks](#report-a-problem).
-
 ---
 
 ## Download and install
@@ -81,7 +79,7 @@ In **Blocks > Study channels**, type part of a channel's name and pick it from t
 
 ## Privacy and permissions
 
-Nothing you do in the app is sent anywhere, and there are no accounts, analytics or ads.
+Nothing you do in the app is sent anywhere, and there are no accounts, analytics or ads. See the full [privacy policy](PRIVACY.md).
 
 | Permission | Why |
 | --- | --- |
@@ -91,6 +89,10 @@ Nothing you do in the app is sent anywhere, and there are no accounts, analytics
 | **Post notifications / foreground service** | The permanent usage notification, only if you turn it on. |
 | **Device admin (no powers)** | Optional uninstall protection. |
 | **Internet** | Only for the channel search and loading channel logos. |
+
+## Disclaimer
+
+FocusGuard is an independent, free project. It is not affiliated with, endorsed by or sponsored by Google, YouTube, Instagram or any other app it can block. Those names belong to their owners. Channel search uses an unofficial YouTube address and Reels / Shorts detection reads on-screen text, so both can stop working when those apps change. The app is provided as is, with no warranty (see the licence). Full details: [Privacy policy](PRIVACY.md).
 
 ## Known limits
 
@@ -108,6 +110,12 @@ Everything from the old list is built. Ideas for next: more languages, per-site 
 ## Report a problem
 
 Open an [Issue](https://github.com/AnmolKumar-dot/FocusGuard/issues) and include: phone model, Android version, the YouTube and Instagram app versions, what you tapped, and what you expected to happen.
+
+---
+
+## Licence
+
+[MIT](LICENSE). You are free to use, copy and modify it. Pull requests and issues are welcome.
 
 ---
 
@@ -140,7 +148,7 @@ Test builds use a shared debug key. For real releases, make your own key once an
 Switching from the debug key to your private key changes the signature, so everyone must uninstall once and then install the new build. After that updates install over each other.
 
 **Publish a release**
-- Automatically: **Actions > Release APK > Run workflow**, enter a tag such as `v3.0.0`. It publishes the release with `RELEASE_NOTES.md` as the description. Leave **pre-release** ticked until you have tried every feature.
+- Automatically: **Actions > Release APK > Run workflow**, enter a tag such as `v3.0.0`. It publishes the release with `RELEASE_NOTES.md` as the description. Leave **pre-release** unticked for an official release.
 - By hand: **Releases > Draft a new release**, create a tag, paste `RELEASE_NOTES.md`, attach the APK.
 
 **Fixing detection after an app update**
