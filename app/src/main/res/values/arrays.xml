@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="day_short">
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+        <item>Sun</item>
+    </string-array>
+    <string-array name="day_letter">
+        <item>M</item>
+        <item>T</item>
+        <item>W</item>
+        <item>T</item>
+        <item>F</item>
+        <item>S</item>
+        <item>S</item>
+    </string-array>
+    <string-array name="survey_q2_opts">
+        <item>Instagram Reels</item>
+        <item>YouTube and Shorts</item>
+        <item>Games</item>
+        <item>Chats and WhatsApp</item>
+        <item>Honestly, everything</item>
+    </string-array>
+    <string-array name="survey_q3_opts">
+        <item>School exams</item>
+        <item>A competitive exam (JEE, NEET, UPSC...)</item>
+        <item>College or university</item>
+        <item>Learning a skill</item>
+    </string-array>
+    <string-array name="survey_q4_opts">
+        <item>Under 2 hours</item>
+        <item>2 to 4 hours</item>
+        <item>4 to 6 hours</item>
+        <item>More than 6 hours</item>
+    </string-array>
+    <string-array name="survey_q5_opts">
+        <item>Gently, be kind</item>
+        <item>Funny, make me laugh</item>
+        <item>Savage, roast me</item>
+    </string-array>
+    <string-array name="survey_phone_text">
+        <item>under 2 hours</item>
+        <item>about 3 hours</item>
+        <item>about 5 hours</item>
+        <item>more than 6 hours</item>
+    </string-array>
+    <string-array name="block_emojis">
+        <item>😏</item>
+        <item>🙃</item>
+        <item>😬</item>
+        <item>🤡</item>
+        <item>🙈</item>
+        <item>🧐</item>
+        <item>😴</item>
+        <item>📚</item>
+        <item>😅</item>
+        <item>🤨</item>
+    </string-array>
+    <string-array name="jokes_gentle">
+        <item>Hey {name}, that app will still be there in an hour. Your exam won\'t wait as patiently.</item>
+        <item>Nice try, {name}. Your future self is quietly cheering for you right now.</item>
+        <item>One more chapter first, {name}. Then you can scroll guilt-free.</item>
+        <item>{name}, you opened that out of habit, not need. Let\'s break the habit together.</item>
+        <item>Deep breath, {name}. The urge passes in about 90 seconds. Study through it.</item>
+        <item>You\'ve got this, {name}. Even five focused minutes count.</item>
+        <item>Little steps, {name}. Back to the book and the rest takes care of itself.</item>
+        <item>The phone can wait, {name}. Your goals can\'t be rescheduled.</item>
+    </string-array>
+    <string-array name="jokes_funny">
+        <item>Plot twist, {name}: the notification was not important. It never is.</item>
+        <item>Breaking news: local student tries to open a blocked app. Sources say it did not go well.</item>
+        <item>{name}, your thumb has a mind of its own. Time to train it like a puppy.</item>
+        <item>Congratulations {name}, you unlocked the Procrastination achievement. Reward: a textbook.</item>
+        <item>I\'m not saying you\'re addicted, {name}, but your thumb just opened that app on autopilot.</item>
+        <item>Error 404: self-control not found. Please refresh your motivation.</item>
+        <item>Wow {name}, the syllabus called. It says it misses you.</item>
+        <item>Your phone says \'Open me!\' and your syllabus says \'Excuse me?!\' Guess who\'s winning, {name}.</item>
+    </string-array>
+    <string-array name="jokes_savage">
+        <item>{name}, you can\'t even stay focused for one study session. Wow, how impressive.</item>
+        <item>Opening that app again, {name}? Your marks are not going to scroll themselves up.</item>
+        <item>Bold of you to think you\'d pass by scrolling, {name}.</item>
+        <item>{name}, even your phone is tired of watching you not study.</item>
+        <item>Another day, another attempt to dodge the syllabus, {name}. Same result: blocked.</item>
+        <item>You said \'just five minutes\', {name}. That was three hours ago. Every time.</item>
+        <item>A goldfish can focus longer than you right now, {name}. Prove it wrong.</item>
+        <item>If procrastination were a subject, you\'d be topping it, {name}.</item>
+    </string-array>
+    <string-array name="jokes_reels">
+        <item>Reels will not get you through the exam, {name}. Nobody has ever been tested on them.</item>
+        <item>That \'one quick reel\' is a lie we all tell ourselves, {name}. It\'s never just one.</item>
+        <item>The reel algorithm knows you better than your syllabus does. Let\'s fix that.</item>
+        <item>Reels are infinite, {name}. Your exam date is not.</item>
+    </string-array>
+    <string-array name="jokes_youtube">
+        <item>YouTube is great for studying until you\'re 40 minutes into a video about how bridges are built, {name}.</item>
+        <item>Shorts are called short because they steal your time in short bursts, {name}.</item>
+        <item>Your watch history is longer than your revision list, {name}.</item>
+        <item>Recommended for you: the chapter you\'ve been avoiding.</item>
+    </string-array>
+    <string-array name="jokes_games">
+        <item>The game will still have its next level tomorrow, {name}. Your exam won\'t wait.</item>
+        <item>Your rank in the game is great. Now rank up in your studies, {name}.</item>
+        <item>Respawn is for games, {name}. Exams give you one attempt.</item>
+        <item>\'Ten more minutes of the game,\' you said. The sun is already up.</item>
+    </string-array>
+    <string-array name="jokes_chats">
+        <item>The group chat has 200 new messages and none of them are important, {name}.</item>
+        <item>\'Seen\' can wait, {name}. Your chapter can\'t.</item>
+        <item>Whatever they sent is not going anywhere. Reply after the session.</item>
+        <item>Your friends will survive if you reply in an hour, {name}.</item>
+    </string-array>
+    <string-array name="jokes_goal_school">
+        <item>Boards don\'t care how many reels you watched, {name}.</item>
+        <item>Your teachers would love to see this level of dedication to the syllabus, {name}.</item>
+        <item>Every page you read now is one less panic later, {name}.</item>
+    </string-array>
+    <string-array name="jokes_goal_comp">
+        <item>Somewhere, someone preparing for the same exam just closed this app, {name}. Your move.</item>
+        <item>Rank lists are made of daily hours, {name}, not good intentions.</item>
+        <item>The competition is not scrolling right now, {name}.</item>
+    </string-array>
+    <string-array name="jokes_goal_college">
+        <item>Assignments don\'t do themselves, {name}. I\'ve waited. Trust me.</item>
+        <item>Semester exams are coming, {name}. They always are.</item>
+        <item>Future you wants an internship. Present you wants a reel. Choose wisely, {name}.</item>
+    </string-array>
+    <string-array name="jokes_goal_skill">
+        <item>Skills compound, {name}. So does the time you waste.</item>
+        <item>You said you\'d learn this skill this year. Make today count, {name}.</item>
+        <item>A tutorial a day beats a scroll a day, {name}.</item>
+    </string-array>
+    <string-array name="jokes_night">
+        <item>It\'s late, {name}. Sleep is the best study hack and this app is not part of it.</item>
+        <item>Nothing good happens on a phone after midnight, {name}. Go to sleep.</item>
+        <item>Your brain files what you learned while you sleep, {name}. Give it something worth filing.</item>
+    </string-array>
+    <string-array name="jokes_phone">
+        <item>You spend {hours} on your phone each day, {name}. Imagine what that would do for your marks.</item>
+        <item>{hours} a day on the phone, {name}. Let\'s borrow just a little of it for studying.</item>
+        <item>Fun fact: {hours} a day adds up to weeks of your year, {name}. Let\'s invest some in yourself.</item>
+    </string-array>
+</resources>
