@@ -70,7 +70,7 @@ class BlocksFragment : Fragment(R.layout.fragment_blocks), Refreshable {
         sw.isChecked = value
         sw.setOnCheckedChangeListener { _, checked ->
             if (prefs.isLocked()) {
-                requireContext().toast("Locked during a strict session")
+                requireContext().toast(R.string.locked_strict)
             } else {
                 onChange(checked)
             }
@@ -82,15 +82,15 @@ class BlocksFragment : Fragment(R.layout.fragment_blocks), Refreshable {
         val ctx = requireContext()
         when {
             !hasPermission -> {
-                tv.text = "Permission missing"
+                tv.text = getString(R.string.status_permission_missing)
                 tv.setTextColor(ContextCompat.getColor(ctx, R.color.danger))
             }
             on -> {
-                tv.text = "Blocking"
-                tv.setTextColor(ContextCompat.getColor(ctx, R.color.green))
+                tv.text = getString(R.string.status_blocking)
+                tv.setTextColor(Accent.color)
             }
             else -> {
-                tv.text = "Turned off"
+                tv.text = getString(R.string.status_off)
                 tv.setTextColor(ContextCompat.getColor(ctx, R.color.text_secondary))
             }
         }
@@ -118,7 +118,7 @@ class BlocksFragment : Fragment(R.layout.fragment_blocks), Refreshable {
         )
         ytGroup.setOnCheckedChangeListener { _, id ->
             if (prefs.isLocked()) {
-                requireContext().toast("Locked during a strict session")
+                requireContext().toast(R.string.locked_strict)
             } else {
                 prefs.ytMode = when (id) {
                     R.id.rbStudy -> Prefs.YT_STUDY
@@ -131,11 +131,60 @@ class BlocksFragment : Fragment(R.layout.fragment_blocks), Refreshable {
 
         val channels = prefs.channels().size
         channelsValue.text = when {
-            channels == 0 -> "None yet - in study mode every video is blocked"
-            channels == 1 -> "1 channel allowed"
-            else -> "$channels channels allowed"
+            channels == 0 -> getString(R.string.channels_none)
+            else -> getString(R.string.n_channels_allowed, channels)
         }
         val apps = prefs.blockedPackages.size
-        appsValue.text = if (apps == 1) "1 app" else "$apps apps"
+        appsValue.text = requireContext().getString(R.string.n_apps, apps)
+        buildExtras()
+        Accent.apply(requireView())
+    }
+
+    private fun buildExtras() {
+        val ctx = requireContext()
+        val v = requireView()
+        val top = v.findViewById<android.widget.LinearLayout>(R.id.extraTop)
+        val bottom = v.findViewById<android.widget.LinearLayout>(R.id.extraBottom)
+        top.removeAllViews()
+        bottom.removeAllViews()
+
+        // which set of rules is being edited
+        top.addView(
+            Ui.cardOf(
+                ctx, listOf(
+                    Ui.row(ctx, getString(R.string.profile_rules_for), getString(R.string.profile_rules_sub),
+                        prefs.profileName(prefs.activeProfile)) {
+                        ProfilesSheet().show(parentFragmentManager, "profiles")
+                    })
+            ), Ui.match()
+        )
+        top.addView(Ui.gap(ctx, 16))
+
+        bottom.addView(Ui.section(ctx, getString(R.string.more_rules)))
+        val siteNames = arrayOf(getString(R.string.sites_off), getString(R.string.sites_block), getString(R.string.sites_study))
+        val notifNames = arrayOf(getString(R.string.notif_mode_off), getString(R.string.notif_mode_blocked), getString(R.string.notif_mode_all))
+        val pending = prefs.silenced().size
+        val rows = ArrayList<View>()
+        rows.add(Ui.row(ctx, getString(R.string.sites_title), getString(R.string.sites_row_sub),
+            siteNames[prefs.siteMode.coerceIn(0, 2)]) { SitesSheet().show(parentFragmentManager, "sites") })
+        rows.add(Ui.switchRow(ctx, getString(R.string.allow_mode), getString(R.string.allow_mode_sub), prefs.allowMode) { on ->
+            if (prefs.isLocked()) {
+                ctx.toast(R.string.locked_strict)
+            } else {
+                prefs.allowMode = on
+            }
+            refresh()
+        })
+        if (prefs.allowMode) {
+            rows.add(Ui.row(ctx, getString(R.string.allow_apps), getString(R.string.allow_apps_sub),
+                ctx.getString(R.string.n_apps, prefs.allowPackages.size)) {
+                AppPickerSheet.newInstance(AppPickerSheet.MODE_ALLOW).show(parentFragmentManager, "apps")
+            })
+        }
+        rows.add(Ui.row(ctx, getString(R.string.notif_title), getString(R.string.notif_row_sub),
+            if (pending > 0) getString(R.string.n_silenced, pending) else notifNames[prefs.notifMode.coerceIn(0, 2)]) {
+            NotificationsSheet().show(parentFragmentManager, "notifs")
+        })
+        bottom.addView(Ui.cardOf(ctx, rows), Ui.match())
     }
 }

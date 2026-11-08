@@ -8,7 +8,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 
-/** The round timer face: dark disc, thin edge, and a green arc showing how far along you are. */
+/** The round timer face: dark disc, thin edge, and an accent arc showing how far along you are. */
 class RingView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
     View(context, attrs) {
 
@@ -20,7 +20,7 @@ class RingView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
 
     private val d = resources.displayMetrics.density
     private val fillPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.parseColor("#D90B1A11")
+        color = Color.parseColor("#D90B1118")
     }
     private val edgePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
@@ -31,11 +31,12 @@ class RingView @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         style = Paint.Style.STROKE
         strokeWidth = 6f * d
         strokeCap = Paint.Cap.ROUND
-        color = Color.parseColor("#7FDB4A")
+        color = Color.parseColor("#2F8CFF")
     }
     private val rect = RectF()
 
     override fun onDraw(canvas: Canvas) {
+        arcPaint.color = Accent.color
         val cx = width / 2f
         val cy = height / 2f
         val r = minOf(width, height) / 2f - 4f * d
@@ -92,8 +93,8 @@ class BarChartView @JvmOverloads constructor(context: Context, attrs: AttributeS
             rect.set(left, bottom - h, left + barW, bottom)
             barPaint.color = when {
                 v == 0 -> Color.parseColor("#2E2E2E")
-                i == n - 1 -> Color.parseColor("#7FDB4A")
-                else -> Color.parseColor("#4C8F2E")
+                i == n - 1 -> Accent.color
+                else -> Accent.mix(Accent.color, Color.parseColor("#0D0D0D"), 0.4f)
             }
             canvas.drawRoundRect(rect, 6f * d, 6f * d, barPaint)
             if (v > 0) canvas.drawText(formatMinutes(v), left + barW / 2f, bottom - h - 6f * d, valuePaint)
@@ -101,5 +102,42 @@ class BarChartView @JvmOverloads constructor(context: Context, attrs: AttributeS
                 canvas.drawText(labels[i], i * slot + slot / 2f, height - 6f * d, labelPaint)
             }
         }
+    }
+}
+
+/** A horizontal bar split into coloured segments (screen time by category). */
+class StackBarView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
+    View(context, attrs) {
+
+    private val d = resources.displayMetrics.density
+    private var parts: List<Pair<Long, Int>> = emptyList()
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val rect = RectF()
+
+    fun setParts(newParts: List<Pair<Long, Int>>) {
+        parts = newParts.filter { it.first > 0L }
+        invalidate()
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        val w = width.toFloat()
+        val h = height.toFloat()
+        paint.color = Color.parseColor("#2E2E2E")
+        rect.set(0f, 0f, w, h)
+        canvas.drawRoundRect(rect, h / 2f, h / 2f, paint)
+        val total = parts.sumOf { it.first }
+        if (total <= 0L) return
+        val path = android.graphics.Path()
+        path.addRoundRect(rect, h / 2f, h / 2f, android.graphics.Path.Direction.CW)
+        canvas.save()
+        canvas.clipPath(path)
+        var x = 0f
+        for ((value, color) in parts) {
+            val seg = w * value / total
+            paint.color = color
+            canvas.drawRect(x, 0f, x + seg - d, h, paint)
+            x += seg
+        }
+        canvas.restore()
     }
 }

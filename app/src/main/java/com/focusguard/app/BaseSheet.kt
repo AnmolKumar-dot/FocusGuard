@@ -11,6 +11,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 /** Shared look for the bottom sheets: our own rounded dark background, opens fully expanded. */
 open class BaseSheet : BottomSheetDialogFragment() {
 
+    override fun onViewCreated(view: View, savedInstanceState: android.os.Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.post { if (isAdded) Accent.apply(view) }
+    }
+
     override fun onStart() {
         super.onStart()
         val d = dialog as? BottomSheetDialog ?: return
