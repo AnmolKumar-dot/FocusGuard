@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="day_short">
+        <item>सोम</item>
+        <item>मंगल</item>
+        <item>बुध</item>
+        <item>गुरु</item>
+        <item>शुक्र</item>
+        <item>शनि</item>
+        <item>रवि</item>
+    </string-array>
+    <string-array name="day_letter">
+        <item>सो</item>
+        <item>मं</item>
+        <item>बु</item>
+        <item>गु</item>
+        <item>शु</item>
+        <item>श</item>
+        <item>र</item>
+    </string-array>
+    <string-array name="survey_q2_opts">
+        <item>Instagram Reels</item>
+        <item>YouTube और Shorts</item>
+        <item>गेम</item>
+        <item>चैट और WhatsApp</item>
+        <item>सच कहूँ तो सब कुछ</item>
+    </string-array>
+    <string-array name="survey_q3_opts">
+        <item>स्कूल की परीक्षाएँ</item>
+        <item>प्रतियोगी परीक्षा (JEE, NEET, UPSC...)</item>
+        <item>कॉलेज या यूनिवर्सिटी</item>
+        <item>कोई नई स्किल सीखना</item>
+    </string-array>
+    <string-array name="survey_q4_opts">
+        <item>2 घंटे से कम</item>
+        <item>2 से 4 घंटे</item>
+        <item>4 से 6 घंटे</item>
+        <item>6 घंटे से ज़्यादा</item>
+    </string-array>
+    <string-array name="survey_q5_opts">
+        <item>नरमी से, प्यार से</item>
+        <item>मज़ेदार, हँसाते हुए</item>
+        <item>तीखा, मेरी खिंचाई करो</item>
+    </string-array>
+    <string-array name="survey_phone_text">
+        <item>2 घंटे से कम</item>
+        <item>लगभग 3 घंटे</item>
+        <item>लगभग 5 घंटे</item>
+        <item>6 घंटे से ज़्यादा</item>
+    </string-array>
+    <string-array name="block_emojis">
+        <item>😏</item>
+        <item>🙃</item>
+        <item>😬</item>
+        <item>🤡</item>
+        <item>🙈</item>
+        <item>🧐</item>
+        <item>😴</item>
+        <item>📚</item>
+        <item>😅</item>
+        <item>🤨</item>
+    </string-array>
+    <string-array name="jokes_gentle">
+        <item>अरे {name}, वह ऐप एक घंटे बाद भी वहीं मिलेगा। आपका एग्ज़ाम इतना सब्र नहीं करेगा।</item>
+        <item>अच्छी कोशिश, {name}। आपका भविष्य वाला रूप अभी चुपचाप आपके लिए ताली बजा रहा है।</item>
+        <item>पहले एक चैप्टर, {name}। फिर बिना किसी अपराध-बोध के स्क्रॉल कीजिए।</item>
+        <item>{name}, आपने वह ज़रूरत से नहीं, आदत से खोला। चलिए यह आदत मिलकर तोड़ते हैं।</item>
+        <item>गहरी साँस लीजिए, {name}। यह इच्छा करीब 90 सेकंड में गुज़र जाती है। पढ़ाई करते रहिए।</item>
+        <item>आप कर सकते हैं, {name}। पाँच मिनट का ध्यान भी गिना जाता है।</item>
+        <item>छोटे कदम, {name}। किताब पर लौटिए, बाकी सब अपने आप हो जाएगा।</item>
+        <item>फ़ोन इंतज़ार कर सकता है, {name}। आपके लक्ष्य नहीं कर सकते।</item>
+    </string-array>
+    <string-array name="jokes_funny">
+        <item>ट्विस्ट, {name}: वह नोटिफ़िकेशन ज़रूरी नहीं था। कभी होता भी नहीं है।</item>
+        <item>ताज़ा खबर: एक स्थानीय छात्र ने ब्लॉक किया हुआ ऐप खोलने की कोशिश की। सूत्रों के मुताबिक नतीजा अच्छा नहीं रहा।</item>
+        <item>{name}, आपका अंगूठा अपनी मर्ज़ी का मालिक है। इसे पिल्ले की तरह ट्रेन करने का वक़्त है।</item>
+        <item>बधाई हो {name}, आपने \'टालमटोल\' की उपलब्धि अनलॉक की। इनाम: एक किताब।</item>
+        <item>मैं यह नहीं कह रहा कि आपको लत है, {name}, पर आपका अंगूठा अभी अपने आप वह ऐप खोल बैठा।</item>
+        <item>Error 404: आत्म-नियंत्रण नहीं मिला। कृपया अपनी प्रेरणा रिफ़्रेश करें।</item>
+        <item>वाह {name}, सिलेबस का फ़ोन आया था। कह रहा है आपकी याद आ रही है।</item>
+        <item>आपका फ़ोन कहता है \'मुझे खोलो!\' और सिलेबस कहता है \'ज़रा रुको!\' अंदाज़ा लगाइए कौन जीत रहा है, {name}।</item>
+    </string-array>
+    <string-array name="jokes_savage">
+        <item>{name}, आप एक स्टडी सेशन भी ध्यान से नहीं निकाल पाते। वाह, कितना प्रभावशाली।</item>
+        <item>फिर वही ऐप, {name}? आपके नंबर स्क्रॉल करके खुद ऊपर नहीं चढ़ेंगे।</item>
+        <item>हिम्मत है आपकी, {name}, जो सोचते हैं कि स्क्रॉल करके पास हो जाएँगे।</item>
+        <item>{name}, आपका फ़ोन भी आपको न पढ़ते देख-देखकर थक गया है।</item>
+        <item>एक और दिन, सिलेबस से बचने की एक और कोशिश, {name}। नतीजा वही: ब्लॉक।</item>
+        <item>आपने कहा था \'बस पाँच मिनट\', {name}। वह तीन घंटे पहले की बात है। हर बार।</item>
+        <item>अभी एक गोल्डफ़िश आपसे ज़्यादा देर ध्यान लगा सकती है, {name}। इसे गलत साबित कीजिए।</item>
+        <item>अगर टालमटोल कोई विषय होता, तो आप उसमें टॉप करते, {name}।</item>
+    </string-array>
+    <string-array name="jokes_reels">
+        <item>Reels आपको एग्ज़ाम पास नहीं कराएँगी, {name}। उनसे आज तक किसी का टेस्ट नहीं हुआ।</item>
+        <item>वह \'बस एक रील\' हम सबका खुद से बोला हुआ झूठ है, {name}। वह कभी एक नहीं होती।</item>
+        <item>रील का एल्गोरिदम आपको आपके सिलेबस से बेहतर जानता है। इसे ठीक करते हैं।</item>
+        <item>Reels अनंत हैं, {name}। आपकी परीक्षा की तारीख नहीं।</item>
+    </string-array>
+    <string-array name="jokes_youtube">
+        <item>YouTube पढ़ाई के लिए बढ़िया है, जब तक आप पुल कैसे बनते हैं वाले वीडियो में 40 मिनट नहीं डूब जाते, {name}।</item>
+        <item>Shorts को शॉर्ट इसलिए कहते हैं क्योंकि वे आपका समय छोटे-छोटे टुकड़ों में चुराते हैं, {name}।</item>
+        <item>आपकी वॉच हिस्ट्री आपकी रिवीज़न लिस्ट से लंबी है, {name}।</item>
+        <item>आपके लिए सुझाया गया: वह चैप्टर जिससे आप बच रहे हैं।</item>
+    </string-array>
+    <string-array name="jokes_games">
+        <item>गेम का अगला लेवल कल भी वहीं होगा, {name}। आपका एग्ज़ाम इंतज़ार नहीं करेगा।</item>
+        <item>गेम में आपकी रैंक शानदार है। अब पढ़ाई में रैंक बढ़ाइए, {name}।</item>
+        <item>रिस्पॉन गेम में होता है, {name}। एग्ज़ाम में एक ही मौका मिलता है।</item>
+        <item>\'बस दस मिनट और खेलूँगा,\' आपने कहा था। सूरज निकल आया है।</item>
+    </string-array>
+    <string-array name="jokes_chats">
+        <item>ग्रुप चैट में 200 नए मैसेज हैं और उनमें से एक भी ज़रूरी नहीं है, {name}।</item>
+        <item>\'Seen\' इंतज़ार कर सकता है, {name}। आपका चैप्टर नहीं।</item>
+        <item>उन्होंने जो भी भेजा है वह कहीं नहीं जा रहा। सेशन के बाद जवाब दीजिए।</item>
+        <item>अगर आप एक घंटे बाद जवाब देंगे तो आपके दोस्त बच जाएँगे, {name}।</item>
+    </string-array>
+    <string-array name="jokes_goal_school">
+        <item>बोर्ड को इससे फ़र्क नहीं पड़ता कि आपने कितनी रील देखीं, {name}।</item>
+        <item>आपके टीचर सिलेबस के लिए आपका यह समर्पण देखना पसंद करेंगे, {name}।</item>
+        <item>अभी पढ़ा हुआ हर पन्ना बाद की एक घबराहट कम करता है, {name}।</item>
+    </string-array>
+    <string-array name="jokes_goal_comp">
+        <item>कहीं कोई उसी परीक्षा की तैयारी करने वाला अभी यह ऐप बंद कर चुका है, {name}। अब आपकी बारी।</item>
+        <item>रैंक लिस्ट रोज़ के घंटों से बनती है, {name}, अच्छे इरादों से नहीं।</item>
+        <item>कॉम्पिटिशन अभी स्क्रॉल नहीं कर रहा, {name}।</item>
+    </string-array>
+    <string-array name="jokes_goal_college">
+        <item>असाइनमेंट अपने आप नहीं होते, {name}। मैंने इंतज़ार करके देखा है।</item>
+        <item>सेमेस्टर एग्ज़ाम आ रहे हैं, {name}। वे हमेशा आते हैं।</item>
+        <item>भविष्य वाले आप इंटर्नशिप चाहते हैं। अभी वाले आप रील। समझदारी से चुनिए, {name}।</item>
+    </string-array>
+    <string-array name="jokes_goal_skill">
+        <item>स्किल्स चक्रवृद्धि से बढ़ती हैं, {name}। बर्बाद किया समय भी।</item>
+        <item>आपने कहा था इसी साल यह स्किल सीखेंगे। आज का दिन गिनवाइए, {name}।</item>
+        <item>रोज़ एक ट्यूटोरियल रोज़ के एक स्क्रॉल से बेहतर है, {name}।</item>
+    </string-array>
+    <string-array name="jokes_night">
+        <item>रात हो गई है, {name}। नींद सबसे अच्छा स्टडी हैक है और यह ऐप उसका हिस्सा नहीं है।</item>
+        <item>आधी रात के बाद फ़ोन पर कुछ अच्छा नहीं होता, {name}। सो जाइए।</item>
+        <item>आपका दिमाग सोते समय सीखी हुई चीज़ें सहेजता है, {name}। उसे सहेजने लायक कुछ दीजिए।</item>
+    </string-array>
+    <string-array name="jokes_phone">
+        <item>आप रोज़ {hours} फ़ोन पर बिताते हैं, {name}। सोचिए इतना समय पढ़ाई को मिले तो नंबरों का क्या हाल होगा।</item>
+        <item>रोज़ {hours} फ़ोन पर, {name}। उसमें से थोड़ा-सा पढ़ाई के लिए उधार ले लेते हैं।</item>
+        <item>मज़ेदार तथ्य: रोज़ {hours} जुड़कर साल के कई हफ़्ते बन जाते हैं, {name}। कुछ खुद में लगाइए।</item>
+    </string-array>
+</resources>
