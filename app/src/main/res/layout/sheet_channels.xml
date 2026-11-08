@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Study channels"
+            android:text="@string/t_study_channels"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -41,7 +41,8 @@
             android:paddingTop="8dp"
             android:paddingEnd="14dp"
             android:paddingBottom="8dp"
-            android:textColor="@color/green"
+            android:tag="accent_text"
+            android:textColor="@color/accent"
             android:textSize="13sp" />
     </LinearLayout>
 
@@ -51,7 +52,7 @@
         android:paddingStart="20dp"
         android:paddingTop="4dp"
         android:paddingEnd="20dp"
-        android:text="During focus, YouTube only plays videos from these channels."
+        android:text="@string/t_during_focus_youtube_only_pl"
         android:textColor="@color/text_secondary"
         android:textSize="14sp" />
 
@@ -76,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:background="@null"
-            android:hint="Search a YouTube channel"
+            android:hint="@string/t_search_a_youtube_channel"
             android:importantForAutofill="no"
             android:inputType="text"
             android:maxLines="1"
@@ -103,7 +104,8 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingBottom="4dp"
-        android:textColor="@color/green"
+        android:tag="accent_text"
+        android:textColor="@color/accent"
         android:textSize="14sp"
         android:textStyle="bold" />
 

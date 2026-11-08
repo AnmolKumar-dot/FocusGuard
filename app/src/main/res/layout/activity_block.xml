@@ -1,47 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_aurora"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="32dp">
+    android:background="@color/bg"
+    android:fillViewport="true"
+    android:tag="aurora">
 
-    <ImageView
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:importantForAccessibility="no"
-        android:src="@drawable/ic_launcher" />
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Stay focused"
-        android:textSize="32sp"
-        android:textStyle="bold" />
+        android:gravity="center_horizontal"
+        android:minHeight="640dp"
+        android:orientation="vertical"
+        android:padding="28dp">
 
-    <TextView
-        android:id="@+id/blockMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:textColor="#CCFFFFFF"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/blockChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/bg_chip"
+            android:letterSpacing="0.2"
+            android:paddingStart="16dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="6dp"
+            android:tag="accent_text"
+            android:text="@string/block_chip"
+            android:textColor="@color/accent"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
-        android:layout_marginTop="32dp"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
-        android:text="Back to studying"
-        android:textColor="#0D0D0D"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:backgroundTint="#FAFAF5"
-        app:cornerRadius="28dp" />
-</LinearLayout>
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="28dp">
+
+            <View
+                android:id="@+id/blockPulse"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.3"
+                android:background="@drawable/bg_pulse"
+                android:tag="accent_bg" />
+
+            <TextView
+                android:id="@+id/blockEmoji"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:importantForAccessibility="no"
+                android:textSize="64sp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/blockJoke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.1"
+            android:textColor="@color/text_primary"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/blockMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/blockStatToday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:paddingStart="14dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="8dp"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/blockStatLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_card"
+                android:paddingStart="14dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="8dp"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/t_back_to_studying"
+            android:textColor="#0D0D0D"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:backgroundTint="#FAFAF5"
+            app:cornerRadius="29dp" />
+
+        <TextView
+            android:id="@+id/blockAnother"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:padding="16dp"
+            android:text="@string/block_another"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+    </LinearLayout>
+</ScrollView>

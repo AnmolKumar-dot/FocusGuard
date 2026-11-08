@@ -35,14 +35,14 @@
             <ImageView
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:contentDescription="Focus"
+                android:contentDescription="@string/t_focus"
                 android:src="@drawable/ic_hourglass" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Focus"
+                android:text="@string/t_focus"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -61,14 +61,14 @@
             <ImageView
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:contentDescription="Planner"
+                android:contentDescription="@string/t_planner"
                 android:src="@drawable/ic_calendar" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Planner"
+                android:text="@string/t_planner"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -87,14 +87,40 @@
             <ImageView
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:contentDescription="Blocks"
+                android:contentDescription="@string/t_usage"
+                android:src="@drawable/ic_usage" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/t_usage"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:contentDescription="@string/t_blocks"
                 android:src="@drawable/ic_block" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Blocks"
+                android:text="@string/t_blocks"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -113,14 +139,14 @@
             <ImageView
                 android:layout_width="26dp"
                 android:layout_height="26dp"
-                android:contentDescription="Stats"
+                android:contentDescription="@string/t_stats"
                 android:src="@drawable/ic_chart" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Stats"
+                android:text="@string/t_stats"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

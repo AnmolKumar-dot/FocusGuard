@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
             android:paddingBottom="12dp"
-            android:text="Your progress"
+            android:text="@string/t_your_progress"
             android:textSize="28sp"
             android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Today"
+                    android:text="@string/t_today"
                     android:textColor="@color/text_secondary"
                     android:textSize="13sp" />
 
@@ -46,7 +46,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/green"
+                    android:tag="accent_text"
+                    android:textColor="@color/accent"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -64,7 +65,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Streak"
+                    android:text="@string/t_streak"
                     android:textColor="@color/text_secondary"
                     android:textSize="13sp" />
 
@@ -89,7 +90,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total"
+                    android:text="@string/t_total"
                     android:textColor="@color/text_secondary"
                     android:textSize="13sp" />
 
@@ -114,12 +115,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Last 7 days"
+                android:text="@string/t_last_7_days"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
             <com.focusguard.app.BarChartView
                 android:id="@+id/chart"
+                android:tag="accent_custom"
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:layout_marginTop="8dp" />
@@ -136,7 +138,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Goals"
+                android:text="@string/t_goals"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -156,7 +158,8 @@
                 android:layout_marginTop="6dp"
                 android:max="100"
                 android:progressBackgroundTint="#33FFFFFF"
-                android:progressTint="@color/green" />
+                android:tag="accent_tint"
+                android:progressTint="@color/accent" />
 
             <TextView
                 android:id="@+id/goalStreakText"
@@ -174,7 +177,14 @@
                 android:layout_marginTop="6dp"
                 android:max="100"
                 android:progressBackgroundTint="#33FFFFFF"
-                android:progressTint="@color/green" />
+                android:tag="accent_tint"
+                android:progressTint="@color/accent" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/statsExtra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
     </LinearLayout>
 </ScrollView>

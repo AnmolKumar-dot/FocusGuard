@@ -11,7 +11,7 @@
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name (for example Evening Study)"
+        android:hint="@string/t_name_for_example_evening_stu"
         android:importantForAutofill="no"
         android:inputType="textCapSentences"
         android:maxLines="1" />

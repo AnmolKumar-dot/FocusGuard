@@ -17,9 +17,15 @@
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
             android:paddingBottom="12dp"
-            android:text="Blocks"
+            android:text="@string/t_blocks"
             android:textSize="28sp"
             android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/extraTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 
         <LinearLayout
             android:id="@+id/banner"
@@ -33,7 +39,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Blocking will not work until you turn on the FocusGuard accessibility permission"
+                android:text="@string/t_blocking_will_not_work_until"
                 android:textColor="@color/danger"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -43,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
-                android:text="Fix now"
+                android:text="@string/t_fix_now"
                 android:textColor="#0D0D0D"
                 android:textStyle="bold"
                 app:backgroundTint="#FAFAF5"
@@ -53,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="If the switch is greyed out: phone Settings, Apps, FocusGuard, three-dot menu, Allow restricted settings."
+                android:text="@string/t_if_the_switch_is_greyed_out"
                 android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -62,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
-            android:text="Block Shorts and Reels"
+            android:text="@string/t_block_shorts_and_reels"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -96,7 +102,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="YouTube Shorts"
+                        android:text="@string/t_youtube_shorts"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -142,7 +148,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Instagram Reels"
+                        android:text="@string/t_instagram_reels"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -165,7 +171,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="22dp"
             android:paddingBottom="8dp"
-            android:text="YouTube"
+            android:text="@string/t_youtube"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -188,7 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="Allow completely"
+                    android:text="@string/t_allow_completely"
                     android:textSize="16sp" />
 
                 <RadioButton
@@ -196,7 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="Study mode (only chosen channels)"
+                    android:text="@string/t_study_mode_only_chosen_chann"
                     android:textSize="16sp" />
 
                 <RadioButton
@@ -204,7 +210,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="Block completely"
+                    android:text="@string/t_block_completely"
                     android:textSize="16sp" />
             </RadioGroup>
 
@@ -231,7 +237,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Study channels"
+                        android:text="@string/t_study_channels"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 
@@ -257,7 +263,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="22dp"
             android:paddingBottom="8dp"
-            android:text="Apps"
+            android:text="@string/t_apps"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -274,7 +280,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Blocked apps"
+                android:text="@string/t_blocked_apps"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -298,7 +304,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="22dp"
             android:paddingBottom="8dp"
-            android:text="Strict mode protections"
+            android:text="@string/t_strict_mode_protections"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -319,7 +325,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Block phone Settings"
+                    android:text="@string/t_block_phone_settings"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -327,7 +333,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="During a strict session, so FocusGuard cannot be switched off"
+                    android:text="@string/t_during_a_strict_session_so_f"
                     android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -337,5 +343,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/extraBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
     </LinearLayout>
 </ScrollView>

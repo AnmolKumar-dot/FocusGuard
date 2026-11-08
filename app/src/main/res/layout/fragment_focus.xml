@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_aurora">
+    android:background="@color/bg"
+    android:tag="aurora">
 
     <ImageButton
         android:id="@+id/btnProfile"
@@ -12,7 +13,7 @@
         android:layout_gravity="top|start"
         android:layout_margin="16dp"
         android:background="@drawable/bg_chip_circle"
-        android:contentDescription="Stats"
+        android:contentDescription="@string/t_settings"
         android:padding="13dp"
         android:src="@drawable/ic_person" />
 
@@ -37,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Streak"
+                android:text="@string/t_streak"
                 android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
 
@@ -64,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Focus Time"
+                android:text="@string/t_focus_time"
                 android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
 
@@ -85,6 +86,7 @@
 
         <com.focusguard.app.RingView
             android:id="@+id/ring"
+            android:tag="accent_custom"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -98,7 +100,8 @@
                 android:id="@+id/phaseLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/green"
+                android:tag="accent_text"
+                android:textColor="@color/accent"
                 android:textSize="14sp" />
 
             <TextView
@@ -141,11 +144,28 @@
                 android:paddingTop="10dp"
                 android:paddingEnd="22dp"
                 android:paddingBottom="10dp"
-                android:text="Edit"
+                android:text="@string/t_edit"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/btnEmergency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/bg_edit_pill"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="20dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="8dp"
+        android:text="@string/t_emergency_exit"
+        android:textSize="14sp"
+        android:visibility="gone" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStart"
@@ -153,7 +173,7 @@
         android:layout_height="60dp"
         android:layout_gravity="bottom"
         android:layout_margin="16dp"
-        android:text="Start Focus Now"
+        android:text="@string/t_start_focus_now"
         android:textColor="#0D0D0D"
         android:textSize="17sp"
         android:textStyle="bold"

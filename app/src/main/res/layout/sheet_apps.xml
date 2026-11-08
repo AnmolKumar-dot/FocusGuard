@@ -13,12 +13,12 @@
         android:background="@drawable/bg_handle" />
 
     <TextView
+        android:id="@+id/sheetTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="20dp"
         android:paddingTop="16dp"
         android:paddingEnd="20dp"
-        android:text="Apps to block"
         android:textSize="22sp"
         android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:background="@null"
-            android:hint="Search apps"
+            android:hint="@string/t_search_apps"
             android:importantForAutofill="no"
             android:inputType="text"
             android:maxLines="1"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="24dp"
-        android:text="Loading apps..."
+        android:text="@string/t_loading_apps"
         android:textColor="@color/text_secondary" />
 
     <androidx.recyclerview.widget.RecyclerView
