@@ -15,9 +15,9 @@ on:
         required: true
         default: "v3.0.0"
       prerelease:
-        description: "Mark as a pre-release (alpha or beta)"
+        description: "Mark as a pre-release (leave unticked for an official release)"
         type: boolean
-        default: true
+        default: false
 
 permissions:
   contents: write
