@@ -1,0 +1,25 @@
+FocusGuard is a free, offline focus app for students. It blocks distracting apps, websites, Instagram Reels and YouTube Shorts while you study, and keeps YouTube to the study channels you choose. No account, no ads, no subscription. Everything stays on your phone.
+
+<b>Focus</b>
+• Timer and Pomodoro with scroll-wheel time picking
+• Strict mode: no ending early, phone Settings blocked, split screen closed
+• Emergency exit with a cooldown
+• Subject tags, profiles (Study, Exam week, Sleep) and bedtime mode
+
+<b>Block</b>
+• Any installed app, or allow-list mode (block everything except your study apps)
+• Instagram Reels and YouTube Shorts
+• YouTube study mode: only videos from channels you pick
+• Websites in browsers, or study-websites-only mode
+• Daily limits per app or category and a pause screen before distracting apps
+• Silence notifications during focus and read them afterwards
+
+<b>Understand</b>
+• Screen time grouped by category, 7-day chart
+• Focus score, weekly report and streaks
+• Permanent notification, home-screen widget and quick-settings tile
+
+<b>Privacy</b>
+Nothing leaves your phone. The Accessibility service only checks what is on screen while blocking is on and never records it. Internet is used only for the optional YouTube channel search.
+
+English and Hindi.
