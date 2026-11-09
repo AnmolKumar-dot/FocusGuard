@@ -1,11 +1,11 @@
-## FocusGuard v3.0.0
+## FocusGuard v3.0.1
 
 A free, offline study-focus app for Android. Version 3 turns the whole roadmap into features, gives the app a blue look that fades to red while focus is on, and replaces typed numbers with scroll-wheel timers.
 
 > Found a bug? Please report it (see the end) with your phone model and what you tapped.
 
 ### Install
-1. Download `FocusGuard-v3.0.0.apk` from the Assets below and open it. Android will ask you to allow installs from your browser or file manager.
+1. Download `FocusGuard-v3.0.1.apk` from the Assets below and open it. Android will ask you to allow installs from your browser or file manager.
 2. **Uninstall any older FocusGuard first** if Android says it cannot update it (the signing key can change with this release).
 3. Open **Blocks** and tap **Fix now** to enable Accessibility. On Android 13+, if the switch is greyed out: Settings > Apps > FocusGuard > three-dot menu > **Allow restricted settings**.
 4. Allow **Usage access** from the **Usage** tab. Optional: **Notification access** in **Blocks > Notifications**.
@@ -13,7 +13,10 @@ A free, offline study-focus app for Android. Version 3 turns the whole roadmap i
 
 Needs Android 8.0 or newer.
 
-### What's new
+### This update
+- Adds the project website and F-Droid store metadata. The app itself behaves the same as v3.0.0, and installs over it.
+
+### What's new in v3
 - [x] **Blue to red theme**: blue when idle, fades to red when focus turns on, back to blue after
 - [x] **Scroll-wheel timer**: tap the big time on the Focus screen, set hours and minutes with wheels, or pick a preset
 - [x] **Notification blocking and management**: silence blocked apps (or everything except allowed apps) during focus, keep a list, digest when focus ends
