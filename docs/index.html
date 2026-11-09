@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FocusGuard - free offline study focus app for Android</title>
+<meta name="description" content="FocusGuard blocks distracting apps, websites, Instagram Reels and YouTube Shorts while you study. Free, offline, no ads, no account.">
+<meta property="og:title" content="FocusGuard - stay focused while you study">
+<meta property="og:description" content="Free, offline Android app that blocks apps, sites, Reels and Shorts, and keeps YouTube to your study channels.">
+<meta property="og:image" content="logo.png">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="icon" href="favicon.png">
+<style>
+:root{
+  --bg:#0d0d0d; --card:#1b1b1b; --line:#2a2a2a; --text:#f4f4f2; --muted:#a3a3a3;
+  --accent:#2f8cff; --red:#ff4d5e; --max:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+header.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--text);text-decoration:none}
+.brand img{width:34px;height:34px;border-radius:9px}
+.nav a.link{color:var(--muted);text-decoration:none;font-size:15px;margin-left:20px}
+.nav a.link:hover{color:var(--text)}
+
+.hero{position:relative;text-align:center;padding:56px 0 72px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:120%;z-index:-1;
+  background:radial-gradient(60% 55% at 50% 38%,color-mix(in srgb,var(--glow) 34%,transparent),transparent 70%);
+  --glow:var(--accent);animation:shift 9s ease-in-out infinite alternate}
+@keyframes shift{to{--glow:var(--red)}}
+@property --glow{syntax:"<color>";inherits:true;initial-value:#2f8cff}
+.hero .logo{width:112px;height:112px;border-radius:28px;box-shadow:0 10px 50px color-mix(in srgb,var(--accent) 45%,transparent)}
+h1{font-size:clamp(34px,6.5vw,60px);line-height:1.1;margin:26px auto 14px;max-width:16ch;letter-spacing:-.02em}
+.hero p.lead{font-size:clamp(17px,2.4vw,21px);color:var(--muted);max-width:42ch;margin:0 auto 30px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:#fafaf5;color:#0d0d0d;font-weight:700;font-size:18px;padding:16px 30px;border-radius:40px;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--text);border:1px solid var(--line);font-weight:600;font-size:16px;padding:14px 24px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.meta{margin-top:16px;color:var(--muted);font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px}
+.pill{border:1px solid var(--line);background:#151515;border-radius:30px;padding:6px 14px;font-size:14px;color:var(--muted)}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(26px,4vw,36px);margin:0 0 10px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 32px;max-width:60ch}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.card .ic{font-size:26px;margin-bottom:10px}
+
+ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;gap:14px}
+ol.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 20px 20px 66px;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:18px;top:18px;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#04122b;font-weight:800;display:grid;place-items:center}
+ol.steps b{display:block;margin-bottom:2px}
+ol.steps span{color:var(--muted);font-size:15px}
+
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--muted);margin:10px 0 0;font-size:15px}
+
+footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--muted);font-size:14px}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:12px}
+footer a{color:var(--muted)}
+.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;background:#fff;color:#000;padding:8px;z-index:9}
+@media (prefers-reduced-motion:reduce){.hero::before{animation:none}html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="#"><img src="logo.png" alt="">FocusGuard</a>
+    <nav><a class="link" href="#features">Features</a><a class="link" href="#install">Install</a><a class="link" href="#faq">FAQ</a></nav>
+  </header>
+</div>
+
+<main id="main">
+<div class="hero"><div class="wrap">
+  <img class="logo" src="logo.png" alt="FocusGuard logo">
+  <h1>Stay focused while you study.</h1>
+  <p class="lead">Blocks distracting apps, websites, Reels and Shorts, and keeps YouTube to your study channels. Free, offline, no ads.</p>
+  <div class="cta">
+    <a class="btn" href="https://github.com/AnmolKumar-dot/FocusGuard/releases/latest">&#11015; Download APK</a>
+    <a class="btn alt" href="https://github.com/AnmolKumar-dot/FocusGuard">View source</a>
+  </div>
+  <div class="meta">Android 8.0 or newer &middot; English and Hindi</div>
+  <div class="pills"><span class="pill">No account</span><span class="pill">No ads</span><span class="pill">Works offline</span><span class="pill">Open source (MIT)</span></div>
+</div></div>
+
+<section id="features"><div class="wrap">
+  <h2>Everything the paid apps lock away</h2>
+  <p class="sub">The whole app is free. No subscription, ever.</p>
+  <div class="grid">
+    <div class="card"><div class="ic">&#9201;</div><h3>Timer and Pomodoro</h3><p>Set the time with scroll wheels. The app glows blue while you rest and fades to red when focus is on.</p></div>
+    <div class="card"><div class="ic">&#128683;</div><h3>Block apps and sites</h3><p>Block any app or website, or allow only your study apps and study sites.</p></div>
+    <div class="card"><div class="ic">&#127916;</div><h3>No Reels, no Shorts</h3><p>Stops Instagram Reels and YouTube Shorts, and lets YouTube play only the channels you choose.</p></div>
+    <div class="card"><div class="ic">&#128274;</div><h3>Strict mode</h3><p>No ending early, Settings blocked, split screen closed. An emergency exit with a cooldown if something real comes up.</p></div>
+    <div class="card"><div class="ic">&#128197;</div><h3>Schedules and bedtime</h3><p>Repeating focus windows, profiles for Study, Exam week and Sleep, and a bedtime mode.</p></div>
+    <div class="card"><div class="ic">&#128202;</div><h3>Usage and limits</h3><p>Screen time by category, daily limits per app, a pause screen before distracting apps.</p></div>
+    <div class="card"><div class="ic">&#128276;</div><h3>Quiet notifications</h3><p>Silences blocked apps during focus and shows a digest of what you missed afterwards.</p></div>
+    <div class="card"><div class="ic">&#127942;</div><h3>Score and weekly report</h3><p>A focus score, streaks, subject tags and a shareable weekly report. Plus a widget and a quick-settings tile.</p></div>
+    <div class="card"><div class="ic">&#128540;</div><h3>Honest roasts</h3><p>Open a blocked app and get a joke that is shaped by what distracts you. Gentle, funny or savage, your choice.</p></div>
+  </div>
+</div></section>
+
+<section id="install"><div class="wrap">
+  <h2>Install in 5 steps</h2>
+  <p class="sub">FocusGuard is not on the Play Store, so Android asks a few extra questions.</p>
+  <ol class="steps">
+    <li><b>Download the APK</b><span>Tap <a href="https://github.com/AnmolKumar-dot/FocusGuard/releases/latest">Download APK</a>, then open <em>Assets</em> and tap the <code>.apk</code> file.</span></li>
+    <li><b>Allow the install</b><span>Android asks to allow installs from your browser. Play Protect may show a warning because the app is not from the Play Store: tap <em>More details</em>, then <em>Install anyway</em>.</span></li>
+    <li><b>Turn on Accessibility</b><span>Open the app, go to <em>Blocks</em>, tap <em>Fix now</em> and switch on FocusGuard. This is how it knows which app is open.</span></li>
+    <li><b>If the switch is greyed out (Android 13+)</b><span>Phone Settings &rarr; Apps &rarr; FocusGuard &rarr; three-dot menu &rarr; <em>Allow restricted settings</em>, then try again.</span></li>
+    <li><b>Keep it running</b><span>Set battery to <em>Unrestricted</em> for FocusGuard, and allow <em>Usage access</em> from the Usage tab for screen time and limits.</span></li>
+  </ol>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2>Questions</h2>
+  <p class="sub">&nbsp;</p>
+  <details><summary>Is it really free?</summary><p>Yes. No ads, no account, no subscription, no in-app purchases. The source code is public under the MIT licence.</p></details>
+  <details><summary>What does it do with my data?</summary><p>Nothing leaves your phone. The Accessibility service checks what is on screen only while blocking is on, and never records it. The internet is used only for the optional YouTube channel search. Read the <a href="https://github.com/AnmolKumar-dot/FocusGuard/blob/main/PRIVACY.md">privacy policy</a>.</p></details>
+  <details><summary>Why does it need Accessibility?</summary><p>It is the only way a normal app can see which app or website is open in order to block it, and to spot Reels and Shorts screens. Without it, blocking cannot work.</p></details>
+  <details><summary>Why does Play Protect warn me?</summary><p>Because the app does not come from the Play Store and uses the Accessibility service. That is expected for apps installed from outside the store. You can check the code yourself on GitHub.</p></details>
+  <details><summary>It stopped blocking Reels or Shorts</summary><p>Instagram and YouTube sometimes change their screens, which can break detection until the app is updated. Please <a href="https://github.com/AnmolKumar-dot/FocusGuard/issues">report it</a> with your phone model, Android version and the app version.</p></details>
+  <details><summary>How do I update?</summary><p>Download the newest APK from the releases page and install it over the old one. Your settings are kept. Use <em>Settings &rarr; Save a backup</em> first if you want a safety copy.</p></details>
+  <details><summary>Does it work on iPhone?</summary><p>No, Android only. iOS does not allow this kind of blocking.</p></details>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="row">
+    <a href="https://github.com/AnmolKumar-dot/FocusGuard">GitHub</a>
+    <a href="https://github.com/AnmolKumar-dot/FocusGuard/releases">All releases</a>
+    <a href="https://github.com/AnmolKumar-dot/FocusGuard/issues">Report a problem</a>
+    <a href="https://github.com/AnmolKumar-dot/FocusGuard/blob/main/PRIVACY.md">Privacy</a>
+    <a href="https://github.com/AnmolKumar-dot/FocusGuard/blob/main/LICENSE">MIT licence</a>
+  </div>
+  FocusGuard is an independent project and is not affiliated with Google, YouTube or Instagram. Provided as is, with no warranty.
+</div></footer>
+</body>
+  </html>
+  
