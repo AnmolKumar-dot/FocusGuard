@@ -1,0 +1,1 @@
+Adds F-Droid metadata and a project website. No change to how the app behaves.
