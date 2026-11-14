@@ -234,6 +234,9 @@
     <string name="digest_text">क्या छूटा देखने के लिए दबाएँ</string>
     <string name="channel_usage">उपयोग और फ़ोकस स्थिति</string>
     <string name="channel_digest">फ़ोकस डाइजेस्ट</string>
+    <string name="channel_alert">चेतावनियाँ</string>
+    <string name="a11y_off_title">एक्सेसिबिलिटी बंद है - ब्लॉकिंग रुकी है</string>
+    <string name="a11y_off_text">आपके फ़ोन ने FocusGuard को बंद कर दिया। दोबारा चालू करने के लिए दबाएँ, वरना शेड्यूल और सेशन कुछ ब्लॉक नहीं करेंगे।</string>
     <string name="notif_focus_left">फ़ोकस चालू · %1$s बाकी</string>
     <string name="notif_break_left">ब्रेक · %1$s बाकी</string>
     <string name="notif_scheduled_on">निर्धारित फ़ोकस चालू है</string>
