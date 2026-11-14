@@ -235,6 +235,9 @@
     <string name="digest_text">Tap to see what you missed</string>
     <string name="channel_usage">Usage and focus status</string>
     <string name="channel_digest">Focus digest</string>
+    <string name="channel_alert">Warnings</string>
+    <string name="a11y_off_title">Accessibility is off - blocking is paused</string>
+    <string name="a11y_off_text">Your phone switched FocusGuard off. Tap to turn it back on, otherwise schedules and sessions will not block anything.</string>
     <string name="notif_focus_left">Focus on · %1$s left</string>
     <string name="notif_break_left">Break · %1$s left</string>
     <string name="notif_scheduled_on">Scheduled focus is on</string>
