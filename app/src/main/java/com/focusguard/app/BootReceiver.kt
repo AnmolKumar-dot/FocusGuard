@@ -8,6 +8,8 @@ import android.content.Intent
 class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         UsageNotificationService.sync(context)
+        A11yWatch.scheduleAlarm(context)
+        A11yWatch.check(context)
         try {
             FocusWidget.refreshAll(context)
         } catch (e: Exception) {

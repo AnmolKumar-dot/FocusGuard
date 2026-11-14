@@ -330,6 +330,7 @@ class Prefs(context: Context, profileOverride: String? = null) {
 
     fun deleteProfile(id: String) {
         if (id == DEFAULT_PROFILE) return
+        if (id == "sleep" && bedtimeOn) return // bedtime mode needs it
         saveProfiles(profiles().filter { it.id != id })
         val e = sp.edit()
         for (name in RULE_KEYS) e.remove(key(id, name))
@@ -531,7 +532,14 @@ class Prefs(context: Context, profileOverride: String? = null) {
     /** The schedules the user made, plus bedtime mode when it is on. */
     fun allSchedules(): List<Schedule> {
         val list = ArrayList(schedules())
-        if (bedtimeOn) list.add(Schedule("bedtime", "Bedtime", bedtimeStart, bedtimeEnd, 127, true, "sleep"))
+        if (bedtimeOn) {
+            // Bedtime uses the "sleep" profile; recreate it if it was deleted or came from a backup.
+            ensureProfile("sleep", app.getString(R.string.profile_sleep)) {
+                it.allowMode = true
+                it.notifMode = NOTIF_ALL
+            }
+            list.add(Schedule("bedtime", "Bedtime", bedtimeStart, bedtimeEnd, 127, true, "sleep"))
+        }
         return list
     }
 

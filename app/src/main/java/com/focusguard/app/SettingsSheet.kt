@@ -120,7 +120,13 @@ class SettingsSheet : ProgSheet() {
         addCard(
             col,
             Ui.switchRow(ctx, getString(R.string.strict_split), getString(R.string.strict_split_sub),
-                prefs.blockSplitScreen) { prefs.blockSplitScreen = it },
+                prefs.blockSplitScreen) { on ->
+                if (lockedToast(ctx)) {
+                    rebuild()
+                } else {
+                    prefs.blockSplitScreen = on
+                }
+            },
             Ui.row(ctx, getString(R.string.strict_admin), getString(R.string.strict_admin_sub),
                 onOff(isAdminActive(ctx))) { toggleAdmin(ctx) },
             Ui.switchRow(ctx, getString(R.string.emergency_enabled), getString(R.string.emergency_enabled_sub),

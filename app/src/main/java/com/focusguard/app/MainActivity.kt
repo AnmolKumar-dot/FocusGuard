@@ -117,6 +117,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        A11yWatch.check(this)
+        A11yWatch.scheduleAlarm(this)
+    }
+
     /** Starts a session with the current plan, after checking that blocking can actually work. */
     fun tryStartSession() {
         if (prefs.isSessionActive()) return

@@ -97,10 +97,16 @@ class UsageNotificationService : Service() {
         } else {
             text = getString(R.string.notif_no_usage_access)
         }
-        val delete = PendingIntent.getService(
-            this, 1, Intent(this, UsageNotificationService::class.java),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
+        val deleteIntent = Intent(this, UsageNotificationService::class.java)
+        val delete = if (Build.VERSION.SDK_INT >= 26) {
+            PendingIntent.getForegroundService(
+                this, 1, deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+        } else {
+            PendingIntent.getService(
+                this, 1, deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+        }
         return NotificationCompat.Builder(this, CH_USAGE)
             .setSmallIcon(R.drawable.ic_hourglass)
             .setContentTitle(title)
@@ -130,6 +136,12 @@ class UsageNotificationService : Service() {
         val blocking = prefs.isBlockingNow()
         if (wasBlocking && !blocking) postDigest(nm, prefs)
         wasBlocking = blocking
+        try {
+            A11yWatch.check(this)
+            FocusWidget.refreshAll(this) // keeps the widget right when a phase or a schedule changes
+        } catch (e: Exception) {
+            // optional
+        }
     }
 
     private fun postDigest(nm: NotificationManager, prefs: Prefs) {

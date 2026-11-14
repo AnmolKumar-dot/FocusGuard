@@ -36,15 +36,70 @@ class FocusAccessibilityService : AccessibilityService() {
     private var badSince = 0L
     private var lastForeground = ""
     private var limitCheckAt = 0L
-    private val recheck = Runnable { checkYouTube(prefs.effective()) }
+    private val recheck = Runnable { safely { checkYouTube(prefs.effective()) } }
 
-    private val homePackages: Set<String> by lazy {
-        try {
-            val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
-            packageManager.queryIntentActivities(intent, 0).map { it.activityInfo.packageName }.toSet()
-        } catch (e: Exception) {
-            emptySet()
+    /** Re-checks the app on screen shortly after a throttled event, so a quick tap is not missed. */
+    private val trailing = Runnable { safely { evaluateCurrent() } }
+
+    /**
+     * Every few seconds while blocking is due, looks at the app on screen again. This catches a
+     * schedule that starts while you are already inside a blocked app (no new window event comes).
+     */
+    private val ticker = object : Runnable {
+        override fun run() {
+            safely { if (prefs.isBlockingNow() || prefs.limitsEnabled) evaluateCurrent() }
+            handler.postDelayed(this, TICK_MS)
         }
+    }
+
+    private var homeCache: Set<String> = emptySet()
+    private var homeCacheAt = 0L
+
+    /** Launcher apps; looked up again every minute so a newly installed launcher is never blocked. */
+    private val homePackages: Set<String>
+        get() {
+            val now = SystemClock.uptimeMillis()
+            if (homeCacheAt == 0L || now - homeCacheAt > 60_000L) {
+                homeCacheAt = now
+                homeCache = try {
+                    val intent = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
+                    packageManager.queryIntentActivities(intent, 0).map { it.activityInfo.packageName }.toSet()
+                } catch (e: Exception) {
+                    homeCache
+                }
+            }
+            return homeCache
+        }
+
+    /**
+     * An uncaught exception in an accessibility service kills it, and after that Android can switch
+     * the permission off by itself. So nothing here is allowed to throw.
+     */
+    private inline fun safely(block: () -> Unit) {
+        try {
+            block()
+        } catch (e: Exception) {
+            // ignore: the next event tries again
+        }
+    }
+
+    override fun onServiceConnected() {
+        super.onServiceConnected()
+        safely { A11yWatch.check(this) }
+        handler.removeCallbacks(ticker)
+        handler.postDelayed(ticker, TICK_MS)
+    }
+
+    override fun onUnbind(intent: Intent?): Boolean {
+        handler.removeCallbacksAndMessages(null)
+        // Android or the user switched the service off: say so right away if blocking depends on it.
+        safely { A11yWatch.check(this) }
+        return super.onUnbind(intent)
+    }
+
+    override fun onDestroy() {
+        handler.removeCallbacksAndMessages(null)
+        super.onDestroy()
     }
 
     private val dialerPackage: String by lazy {
@@ -57,16 +112,30 @@ class FocusAccessibilityService : AccessibilityService() {
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         if (event == null) return
-        if (event.eventType == AccessibilityEvent.TYPE_WINDOWS_CHANGED) {
-            checkWindows()
+        safely {
+            if (event.eventType == AccessibilityEvent.TYPE_WINDOWS_CHANGED) {
+                checkWindows()
+                return@safely
+            }
+            val pkg = event.packageName?.toString() ?: return@safely
+            handlePackage(pkg, event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED)
+        }
+    }
+
+    /** Looks at whichever app is on screen right now (used by the timers, not by an event). */
+    private fun evaluateCurrent() {
+        val pkg = rootInActiveWindow?.packageName?.toString() ?: return
+        handlePackage(pkg, false)
+    }
+
+    private fun handlePackage(pkg: String, stateChange: Boolean) {
+        if (isExempt(pkg)) {
+            if (pkg in homePackages) lastForeground = pkg // so opening an app again shows the pause screen
             return
         }
-        val pkg = event.packageName?.toString() ?: return
-        if (isExempt(pkg)) return
 
         val previous = lastForeground
         lastForeground = pkg
-        val stateChange = event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
         val blocking = prefs.isBlockingNow()
         val r = if (blocking) prefs.effective() else prefs
 
@@ -81,6 +150,12 @@ class FocusAccessibilityService : AccessibilityService() {
             }
         }
 
+        // A strict session keeps Settings closed, breaks of a Pomodoro included.
+        if (r.strictBlockSettings && prefs.isLocked() && pkg in STRICT_EXTRA_BLOCKED) {
+            kickToBlockScreen(null)
+            return
+        }
+
         if (!blocking) {
             if (stateChange && pkg != previous) maybePause(pkg)
             return
@@ -90,13 +165,20 @@ class FocusAccessibilityService : AccessibilityService() {
             kickToBlockScreen(null)
             return
         }
-        if (r.allowMode && pkg !in r.allowPackages) {
+        // In "allow only" mode Settings stays reachable unless a strict session is running, so a
+        // schedule can always be switched off (and the permission fixed).
+        val settingsOk = pkg == "com.android.settings" && !prefs.isLocked()
+        if (r.allowMode && pkg !in r.allowPackages && !settingsOk) {
             kickToBlockScreen(getString(R.string.block_not_allowed))
             return
         }
 
         val now = SystemClock.uptimeMillis()
-        if (now - lastScanMs < SCAN_INTERVAL_MS) return
+        if (now - lastScanMs < SCAN_INTERVAL_MS) {
+            handler.removeCallbacks(trailing)
+            handler.postDelayed(trailing, SCAN_INTERVAL_MS + 60L)
+            return
+        }
         lastScanMs = now
 
         when {
@@ -165,6 +247,8 @@ class FocusAccessibilityService : AccessibilityService() {
 
     private fun checkWindows() {
         if (!prefs.blockSplitScreen || !prefs.isLocked() || !prefs.isBlockingNow()) return
+        // Home does not close a picture-in-picture window, so don't repeat this every second.
+        if (SystemClock.uptimeMillis() - lastActionMs < 6000L) return
         val list = try { windows } catch (e: Exception) { return }
         var bad = false
         for (w in list) {
@@ -397,7 +481,8 @@ class FocusAccessibilityService : AccessibilityService() {
         val ALWAYS_OK = setOf(
             "com.android.systemui", "android", "com.android.phone", "com.android.server.telecom",
             "com.google.android.dialer", "com.android.dialer", "com.samsung.android.dialer",
-            "com.android.incallui", "com.android.emergency", "com.google.android.gms",
+            "com.android.incallui", "com.samsung.android.incallui", "com.sec.android.app.clockpackage",
+            "com.android.emergency", "com.google.android.gms",
             "com.google.android.permissioncontroller", "com.android.permissioncontroller"
         )
 
@@ -425,5 +510,6 @@ class FocusAccessibilityService : AccessibilityService() {
         private const val ACTION_COOLDOWN_MS = 1200L
         private const val GRACE_MS = 1500L
         private const val MAX_NODES = 1500
+        private const val TICK_MS = 4000L
     }
 }

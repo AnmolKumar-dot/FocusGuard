@@ -156,7 +156,8 @@ class PlannerFragment : Fragment(R.layout.fragment_planner), Refreshable {
             sw.setOnCheckedChangeListener { _, checked ->
                 prefs.saveSchedules(prefs.schedules().map { if (it.id == s.id) it.copy(enabled = checked) else it })
             }
-            row.setOnClickListener { showDialog(s) }
+            // Look the schedule up again, so a switch flipped a moment ago is not undone by Save.
+            row.setOnClickListener { showDialog(prefs.schedules().firstOrNull { it.id == s.id } ?: s) }
             scheduleList.addView(row)
         }
     }

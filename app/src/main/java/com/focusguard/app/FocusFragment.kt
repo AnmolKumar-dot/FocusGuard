@@ -117,6 +117,7 @@ class FocusFragment : Fragment(R.layout.fragment_focus), Refreshable {
             .setPositiveButton(R.string.emergency_go) { _, _ ->
                 if (input.text.toString().trim().equals(word, ignoreCase = true)) {
                     prefs.lastEmergencyMs = System.currentTimeMillis()
+                    FocusAccessibilityService.emergencyGraceUntil = System.currentTimeMillis() + 15 * 60_000L
                     prefs.stopSession()
                     refresh()
                 } else {
