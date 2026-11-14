@@ -118,6 +118,10 @@
         </receiver>
 
         <receiver
+            android:name=".A11yReceiver"
+            android:exported="false" />
+
+        <receiver
             android:name=".BootReceiver"
             android:exported="true">
             <intent-filter>
