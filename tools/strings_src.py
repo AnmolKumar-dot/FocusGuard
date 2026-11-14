@@ -259,6 +259,9 @@ S = {
  # permanent notification
  'channel_usage': ('Usage and focus status', 'उपयोग और फ़ोकस स्थिति'),
  'channel_digest': ('Focus digest', 'फ़ोकस डाइजेस्ट'),
+ 'channel_alert': ('Warnings', 'चेतावनियाँ'),
+ 'a11y_off_title': ('Accessibility is off - blocking is paused', 'एक्सेसिबिलिटी बंद है - ब्लॉकिंग रुकी है'),
+ 'a11y_off_text': ('Your phone switched FocusGuard off. Tap to turn it back on, otherwise schedules and sessions will not block anything.', 'आपके फ़ोन ने FocusGuard को बंद कर दिया। दोबारा चालू करने के लिए दबाएँ, वरना शेड्यूल और सेशन कुछ ब्लॉक नहीं करेंगे।'),
  'notif_focus_left': ('Focus on · %1$s left', 'फ़ोकस चालू · %1$s बाकी'),
  'notif_break_left': ('Break · %1$s left', 'ब्रेक · %1$s बाकी'),
  'notif_scheduled_on': ('Scheduled focus is on', 'निर्धारित फ़ोकस चालू है'),
