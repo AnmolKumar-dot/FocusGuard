@@ -11,8 +11,8 @@ android {
         applicationId = "com.focusguard.app"
         minSdk = 26
         targetSdk = 34
-        versionCode = 6
-        versionName = "3.0.2"
+        versionCode = 7
+        versionName = "4.0.0"
     }
 
     // Debug builds keep a fixed key (committed in the repo) so test builds install over each other.
