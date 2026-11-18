@@ -1,15 +1,21 @@
-# FocusGuard 3.0.2
+# FocusGuard 4.0.0
 
-Bug fixes. Install over your current version; settings are kept.
+New study tools. Install over your current version; your settings are kept. All of it works offline and every part can be switched off in Settings -> Study tools.
 
-- Accessibility: the service can no longer be killed by an unexpected error, and if your phone switches it off you now get a notification that opens the right Settings screen (checked every ~15 minutes and right when it turns off).
-- Schedules and bedtime now start blocking even if you are already inside a blocked app, instead of waiting for you to switch screens.
-- Reels, Shorts and site checks no longer miss a quick tap.
-- Editing a schedule no longer turns it back on after you switched it off.
-- Bedtime mode recreates its "Sleep" profile if it was missing.
-- Strict sessions: Settings stays closed during Pomodoro breaks, and the split-screen switch is locked.
-- Pause screen shows again when you reopen an app after going home.
-- Picture-in-picture no longer causes repeated Home presses.
-- Alarms and calls on Samsung phones are no longer blocked in bedtime mode.
-- Emergency exit now lifts daily limits for 15 minutes, as intended.
-- The widget now updates when a break or schedule starts or ends.
+## Features
+- [x] Water: daily goal (default 8 glasses = 2 L; set in glasses, ml or litres), +1 glass, undo, progress ring, weekly chart
+- [x] Water reminders: interval, wake/sleep times, stronger reminder when you are behind, +1 glass button in the notification, shown during Focus Mode
+- [x] Today dashboard: screen time (vs yesterday), focus today/week, goals %, water, streak, weekly charts for focus, screen time and water
+- [x] 2x2 home-screen widget: focus time, goals done, water
+- [x] Goals checklist: subjects with chapters/tasks, add / rename / reorder / delete, type (Concept / Practice / Revision), estimated time
+- [x] Daily lists: carry over unfinished goals or reset every morning, saved templates
+- [x] Tick a chapter: "take a break" (5 or 10 min timer with a tip; blocked apps stay blocked) or "continue" to the next chapter and start a session
+- [x] All goals done: summary and a revision plan
+- [x] Revision queue: same day, then day 1, 3, 7, 14 and 30, with a morning reminder
+- [x] End-of-day recap reminder (brain dump), time of your choice
+- [x] Study Tips tab, tip of the day, tips after chapters and sessions
+- [x] Hindi and English
+
+## Good to know
+- Reminders use ordinary alarms, so Android may move them by a few minutes. For best results set FocusGuard's battery to Unrestricted (Settings -> Study tools -> Make reminders reliable).
+- Android 13+ asks for the notification permission once.
