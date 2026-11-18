@@ -591,6 +591,7 @@ class Prefs(context: Context, profileOverride: String? = null) {
     private fun refreshWidgets() {
         try {
             FocusWidget.refreshAll(app)
+            DashboardWidget.refreshAll(app)
         } catch (e: Exception) {
             // the widget is optional
         }
@@ -638,7 +639,26 @@ class Prefs(context: Context, profileOverride: String? = null) {
     fun manualFocusActive(): Boolean = currentPhase()?.focus == true
 
     /** True when a session or a schedule says distractions should be blocked right now. */
-    fun isBlockingNow(): Boolean = manualFocusActive() || scheduleActive()
+    fun isBlockingNow(): Boolean = manualFocusActive() || scheduleActive() || (breakActive() && breakBlocks)
+
+    /** A short break started from the goals checklist; blocked apps stay blocked during it. */
+    var breakUntilMs: Long
+        get() = sp.getLong("breakUntil", 0L)
+        set(v) = sp.edit().putLong("breakUntil", v).apply()
+
+    fun breakActive(): Boolean = breakUntilMs > System.currentTimeMillis()
+
+    /** True when blocking was on as the break started, so "blocked apps stay blocked". */
+    var breakBlocks: Boolean
+        get() = sp.getBoolean("breakBlocks", false)
+        set(v) = sp.edit().putBoolean("breakBlocks", v).apply()
+
+    /** Starts (or restarts) a break of [minutes]. It only keeps apps blocked if they were blocked before. */
+    fun startBreak(minutes: Int) {
+        val blocked = isBlockingNow()
+        breakBlocks = blocked
+        breakUntilMs = System.currentTimeMillis() + minutes * 60_000L
+    }
 
     /** Strict sessions lock the settings so they can't be loosened mid-session. */
     fun isLocked(): Boolean = isSessionActive() && sessionStrict
@@ -825,7 +845,7 @@ class Prefs(context: Context, profileOverride: String? = null) {
             val names = data.keys()
             while (names.hasNext()) {
                 val name = names.next()
-                if (name == "sessionStart" || name == "sessionEnd") continue // never restore a running session
+                if (name == "sessionStart" || name == "sessionEnd" || name == "breakUntil") continue // never restore a running session
                 val o = data.getJSONObject(name)
                 when (o.getString("t")) {
                     "b" -> e.putBoolean(name, o.getBoolean("v"))

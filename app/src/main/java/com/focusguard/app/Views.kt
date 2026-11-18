@@ -57,6 +57,9 @@ class BarChartView @JvmOverloads constructor(context: Context, attrs: AttributeS
     private var values: List<Int> = emptyList()
     private var labels: List<String> = emptyList()
 
+    /** How a bar's number is written above it. Minutes by default; other charts can change it. */
+    var valueFormat: (Int) -> String = { formatMinutes(it) }
+
     private val barPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val labelPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = Color.parseColor("#9A9A9A")
@@ -97,7 +100,7 @@ class BarChartView @JvmOverloads constructor(context: Context, attrs: AttributeS
                 else -> Accent.mix(Accent.color, Color.parseColor("#0D0D0D"), 0.4f)
             }
             canvas.drawRoundRect(rect, 6f * d, 6f * d, barPaint)
-            if (v > 0) canvas.drawText(formatMinutes(v), left + barW / 2f, bottom - h - 6f * d, valuePaint)
+            if (v > 0) canvas.drawText(valueFormat(v), left + barW / 2f, bottom - h - 6f * d, valuePaint)
             if (i < labels.size) {
                 canvas.drawText(labels[i], i * slot + slot / 2f, height - 6f * d, labelPaint)
             }

@@ -66,6 +66,23 @@ class SettingsSheet : ProgSheet() {
         rebuild()
     }
 
+    private val askReminderNotifications = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        val ctx = context ?: return@registerForActivityResult
+        if (!granted) ctx.toast(R.string.perm_notif_denied)
+        Reminders.scheduleAll(ctx)
+    }
+
+    /** Reminders are notifications, so Android 13+ needs the notification permission. */
+    private fun askReminderPermission(ctx: Context) {
+        if (Build.VERSION.SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(ctx, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+        ) {
+            askReminderNotifications.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
     override fun render(ctx: Context, col: LinearLayout) {
         val prefs = Prefs(ctx)
 
@@ -91,6 +108,75 @@ class SettingsSheet : ProgSheet() {
             Ui.switchRow(ctx, getString(R.string.perm_notification), getString(R.string.perm_notification_sub),
                 prefs.permNotification) { on -> setPermanent(ctx, on) }
         )
+
+        // ---- study tools
+        col.addView(Ui.section(ctx, getString(R.string.set_study)))
+        val f = Features(ctx)
+        val study = ArrayList<android.view.View>()
+        study.add(Ui.switchRow(ctx, getString(R.string.feat_dashboard), getString(R.string.feat_dashboard_sub), f.dashboard) {
+            f.dashboard = it
+            (activity as? MainActivity)?.applyFeatures()
+        })
+        study.add(Ui.switchRow(ctx, getString(R.string.feat_water), getString(R.string.feat_water_sub), f.water) {
+            f.water = it
+            (activity as? MainActivity)?.applyFeatures()
+            rebuild()
+        })
+        study.add(Ui.switchRow(ctx, getString(R.string.feat_goals), getString(R.string.feat_goals_sub), f.goals) {
+            f.goals = it
+            (activity as? MainActivity)?.applyFeatures()
+            rebuild()
+        })
+        study.add(Ui.switchRow(ctx, getString(R.string.feat_tips), getString(R.string.feat_tips_sub), f.tips) {
+            f.tips = it
+            (activity as? MainActivity)?.applyFeatures()
+            rebuild()
+        })
+        if (f.water) {
+            val w = Water(ctx)
+            study.add(Ui.row(ctx, getString(R.string.water_title), getString(R.string.water_settings_sub),
+                getString(R.string.water_goal_short, w.goal)) {
+                WaterSheet().show(parentFragmentManager, "water")
+            })
+        }
+        if (f.goals || f.tips) {
+            study.add(Ui.switchRow(ctx, getString(R.string.set_evening), getString(R.string.set_evening_sub), f.eveningOn) {
+                f.eveningOn = it
+                Reminders.scheduleAll(ctx)
+                askReminderPermission(ctx)
+                rebuild()
+            })
+            if (f.eveningOn) {
+                study.add(Ui.row(ctx, getString(R.string.set_evening_time), null, formatTime(f.eveningMin)) {
+                    StudyUi.pickTime(ctx, f.eveningMin) {
+                        f.eveningMin = it
+                        Reminders.scheduleAll(ctx)
+                        rebuild()
+                    }
+                })
+            }
+        }
+        if (f.goals && f.dashboard) {
+            study.add(Ui.switchRow(ctx, getString(R.string.set_revision), getString(R.string.set_revision_sub), f.revisionOn) {
+                f.revisionOn = it
+                Reminders.scheduleAll(ctx)
+                askReminderPermission(ctx)
+                rebuild()
+            })
+            if (f.revisionOn) {
+                study.add(Ui.row(ctx, getString(R.string.set_revision_time), null, formatTime(f.revisionMin)) {
+                    StudyUi.pickTime(ctx, f.revisionMin) {
+                        f.revisionMin = it
+                        Reminders.scheduleAll(ctx)
+                        rebuild()
+                    }
+                })
+            }
+        }
+        study.add(Ui.row(ctx, getString(R.string.reliable_title), getString(R.string.reliable_sub), StudyUi.batteryStatus(ctx)) {
+            StudyUi.openBatterySettings(ctx)
+        })
+        col.addView(Ui.cardOf(ctx, study), Ui.match())
 
         // ---- pause screen
         col.addView(Ui.section(ctx, getString(R.string.set_pause)))
